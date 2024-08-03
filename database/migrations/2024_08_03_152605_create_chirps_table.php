@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notarized_documents', function (Blueprint $table) {
+        Schema::create('chirps', function (Blueprint $table) {
             $table->id();
-            $table->string('document_hash');
-            $table->string('document_id');
-            $table->timestamp('timestamp');
-            $table->string('notary');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('message');
+            $table->string('file');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notarized_documents');
+        Schema::dropIfExists('chirps');
     }
 };

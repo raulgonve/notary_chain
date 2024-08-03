@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ChirpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/verify-sbt', [NotarizedDocumentController::class, 'verifySBT']);
 });
 
-
+Route::resource('chirps', ChirpController::class)
+    ->only(['index', 'store'])
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

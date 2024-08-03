@@ -6,19 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class NotarizedDocument extends Model
+class Chirp extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'document_hash',
-        'document_id',
-        'timestamp',
-        'notary',
-        'user_id', 
+        'message',
+        'file',
     ];
 
-     public function user(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
