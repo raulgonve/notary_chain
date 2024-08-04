@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('notarized_documents', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
             $table->string('document_hash');
             $table->string('document_id');
-            $table->timestamp('timestamp');
             $table->string('notary');
+            $table->string('ruta');
+            $table->timestamp('timestamp');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

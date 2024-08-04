@@ -11,11 +11,13 @@ class NotarizedDocument extends Model
     use HasFactory;
 
     protected $fillable = [
+        'descripcion',
         'document_hash',
         'document_id',
         'timestamp',
         'notary',
-        'user_id', 
+        'ruta',
+        'user_id',
     ];
 
      public function user(): BelongsTo

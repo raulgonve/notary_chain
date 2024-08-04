@@ -4,40 +4,33 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { ref, computed } from "vue";
 
 dayjs.extend(relativeTime);
-const props = defineProps(["chirp"]);
+const props = defineProps(["documento"]);
 
 // Construir la URL de la imagen desde el campo notary
 const imageBaseUrl = "/storage/"; // Asegúrate de que el almacenamiento público está accesible desde esta URL
-const imageUrl = computed(() => imageBaseUrl + props.chirp.notary);
+const imageUrl = computed(() => imageBaseUrl + props.documento.ruta);
 </script>
 
 <template>
-  <div class="p-6 flex space-x-2 items-center">
-    <img :src="imageUrl" alt="Vista previa del documento" class="thumbnail" />
+  <div class="p-6 flex space-x-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
     <div class="flex-1">
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-gray-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M9 12l2 2 4-4M7 20h10a2 2 0 002-2V6a2 2 0 00-2-2h-5.586a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 007.586 1H7a2 2 0 00-2 2v16a2 2 0 002 2z"
-            />
-          </svg>
-          <span class="text-gray-800">{{ props.chirp.user.name }}</span>
+          <span class="text-gray-800">{{ props.documento.user.name }}</span>
           <small class="ml-2 text-sm text-gray-600">{{
-            dayjs(props.chirp.created_at).fromNow()
+            dayjs(props.documento.created_at).fromNow()
           }}</small>
         </div>
       </div>
-      <p class="text-lg text-gray-900">{{ props.chirp.document_id }}</p>
+        <p class="mt-3 text-lg text-gray-900"><b>descripcion:</b> {{ props.documento.descripcion }}</p>
+        <p class="text-lg text-gray-900"><b>document_id:</b> {{ props.documento.document_id.substring(0,50) }}</p>
+        <p class="text-lg text-gray-900"><b>hash:</b> {{ props.documento.document_hash.substring(0,50) }}</p>
+        <p class="text-lg text-gray-900"><b>notary:</b> {{ props.documento.notary }}</p>
+        <p class="text-lg text-gray-900"><b>preview:</b>  <img :src="imageUrl" alt="archivo" class="thumbnail" /></p>
+
     </div>
   </div>
 </template>

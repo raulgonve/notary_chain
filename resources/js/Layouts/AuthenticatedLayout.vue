@@ -36,8 +36,8 @@ const showingNavigationDropdown = ref(false);
                   Dashboard
                 </NavLink>
                 <NavLink
-                  :href="route('chirps.index')"
-                  :active="route().current('chirps.index')"
+                  :href="route('documentos.index')"
+                  :active="route().current('documentos.index')"
                 >
                   Documentos
                 </NavLink>
@@ -142,8 +142,8 @@ const showingNavigationDropdown = ref(false);
               Dashboard
             </ResponsiveNavLink>
             <ResponsiveNavLink
-              :href="route('chirps.index')"
-              :active="route().current('chirps.index')"
+              :href="route('documentos.index')"
+              :active="route().current('documentos.index')"
             >
               Documentos
             </ResponsiveNavLink>
