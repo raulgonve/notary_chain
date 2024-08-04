@@ -41,6 +41,12 @@ const showingNavigationDropdown = ref(false);
                 >
                   Documentos
                 </NavLink>
+                <NavLink
+                  :href="route('documentos.verificar')"
+                  :active="route().current('documentos.verificar')"
+                >
+                  Verificar Documentos
+                </NavLink>
               </div>
             </div>
 
@@ -146,6 +152,12 @@ const showingNavigationDropdown = ref(false);
               :active="route().current('documentos.index')"
             >
               Documentos
+            </ResponsiveNavLink>
+            <ResponsiveNavLink
+              :href="route('documentos.verificar')"
+              :active="route().current('documentos.verificar')"
+            >
+              Verificar Documentos
             </ResponsiveNavLink>
           </div>
 

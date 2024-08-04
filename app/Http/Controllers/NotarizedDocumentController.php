@@ -53,4 +53,9 @@ class NotarizedDocumentController extends Controller
 
         return redirect(route('documentos.index'));
     }
+
+    public function verificar(): Response
+    {
+        return Inertia::render('Documentos/Verificar');
+    }
 }

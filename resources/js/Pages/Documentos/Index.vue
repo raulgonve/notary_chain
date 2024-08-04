@@ -122,26 +122,6 @@ const issueSBT = async (message, file) => {
   }
 };
 
-const verifySBT = async () => {
-  try {
-    const documentHash = await calculateFileHash(verificationForm.file);
-
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const contract = new ethers.Contract(contractAddress, contractABI, provider);
-
-    const [success, sbt] = await contract.verifySBT(documentHash);
-    verificationForm.verificationSuccess = success;
-    verificationForm.verificationResult = {
-      documentHash: sbt.documentHash,
-      documentID: sbt.documentID,
-      timestamp: Number(sbt.timestamp), // Convertir BigInt a number usando Number()
-      notary: sbt.notary
-    };
-    console.log("SBT verificado:", sbt);
-  } catch (error) {
-    console.error("Error verificando el SBT:", error);
-  }
-};
 </script>
 
 <template>
@@ -190,36 +170,8 @@ const verifySBT = async () => {
       <!-- Modal de carga -->
       <LoadingModal :visible="loading" />
 
-      <!-- Formulario para verificar SBT -->
-      <form @submit.prevent="verifySBT" class="mt-10">
-        <div class="file-upload-container mt-4">
-          <input
-            type="file"
-            @change="handleVerificationFileUpload"
-            ref="verificationFileInput"
-            id="verificationFileInput"
-            class="file-input block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-          />
-          <label class="file-upload-label" for="verificationFileInput">Elegir archivo para verificar</label>
-          <span class="file-upload-text">{{ verificationFileName || "Ningún archivo seleccionado" }}</span>
-        </div>
-        <InputError :message="verificationForm.errors.file" class="mt-2" />
-
-        <PrimaryButton class="mt-4">Verificar Documento</PrimaryButton>
-      </form>
-
-      <div v-if="verificationForm.verificationResult && verificationForm.verificationSuccess" class="mt-6 bg-white shadow-sm rounded-lg p-4">
-        <h3 class="text-lg font-semibold">Resultado de Verificación:</h3>
-        <p><strong>Document Hash:</strong> {{ verificationForm.verificationResult.documentHash }}</p>
-        <p><strong>Document ID:</strong> {{ verificationForm.verificationResult.documentID }}</p>
-        <p><strong>Timestamp:</strong> {{ new Date(verificationForm.verificationResult.timestamp * 1000).toLocaleString() }}</p>
-        <p><strong>Notary Address:</strong> {{ verificationForm.verificationResult.notary }}</p>
-      </div>
-      <div v-if="verificationForm.verificationResult && !verificationForm.verificationSuccess" class="mt-6 bg-white shadow-sm rounded-lg p-4">
-        <h3 class="text-lg font-semibold">Verificación fallida: No se encontró un SBT para este archivo.</h3>
-      </div>
-
       <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+        <h2 class="mb-3">Lista de Documentos Cargados:</h2>
         <Documento v-for="documento in documentos" :key="documento.id" :documento="documento" />
       </div>
     </div>
