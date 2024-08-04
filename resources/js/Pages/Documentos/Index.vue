@@ -18,21 +18,14 @@ const form = useForm({
   document_hash: null,
 });
 
-const verificationForm = useForm({
-  file: null,
-  verificationResult: null,
-  verificationSuccess: false,
-});
-
 const fileName = ref("");
-const verificationFileName = ref("");
 const contractAddress = "0xB45bc0526137372718ad271eD3c816b77526ebe9"; // Dirección del contrato
 const contractABI = [
   "function issueSBT(bytes32 documentHash, bytes32 documentID, address notary) public",
   "function verifySBT(bytes32 documentHash) public view returns (bool, (bytes32 documentHash, bytes32 documentID, uint256 timestamp, address notary))"
 ];
 
-const message = ref(null);  // Variable para almacenar mensajes de éxito o error
+const respuesta = ref('');  // Variable para almacenar mensajes de éxito o error
 const loading = ref(false);  // Variable para controlar la visibilidad del modal
 
 const handleFileUpload = (event) => {
@@ -40,10 +33,6 @@ const handleFileUpload = (event) => {
   fileName.value = form.file ? form.file.name : "";
 };
 
-const handleVerificationFileUpload = (event) => {
-  verificationForm.file = event.target.files[0];
-  verificationFileName.value = verificationForm.file ? verificationForm.file.name : "";
-};
 
 const submitForm = async () => {
   const formData = new FormData();
@@ -62,7 +51,7 @@ const submitForm = async () => {
     form.post(route("documentos.store"), {
       onSuccess: async () => {
         form.reset();
-        message.value = "Documento notariado con éxito.";
+        respuesta.value = "Documento notariado con éxito.";
       },
       forceFormData: true,
       data: formData,
@@ -117,7 +106,7 @@ const issueSBT = async (message, file) => {
   } catch (error) {
     loading.value = false; // Ocultar el modal de carga
     // console.error("Error emitiendo el token:", error);
-    message.value = `Error emitiendo el token: ${error.reason || error.message}`;
+    respuesta.value = `Error emitiendo el token: ${error.reason || error.message || error.data.message}`;
     return false;
   }
 };
@@ -163,15 +152,15 @@ const issueSBT = async (message, file) => {
       </form>
 
       <!-- Mensaje de éxito o error -->
-      <div v-if="message" class="mt-4 p-2 rounded bg-white text-red-500">
-        {{ message.substring(0, 120) }}
+      <div v-if="respuesta" class="mt-4 p-2 rounded bg-white text-red-500">
+        {{ respuesta.substring(0, 120) }}
       </div>
 
       <!-- Modal de carga -->
       <LoadingModal :visible="loading" />
 
       <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
-        <h2 class="mb-3">Lista de Documentos Cargados:</h2>
+        <h2 v-if="documentos" class="mb-3">Lista de Documentos Cargados:</h2>
         <Documento v-for="documento in documentos" :key="documento.id" :documento="documento" />
       </div>
     </div>

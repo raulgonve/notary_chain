@@ -11,7 +11,7 @@
 
 NotaryChain es una plataforma de notaría digital descentralizada que utiliza la tecnología blockchain y la integración de Soulbound Tokens (SBT) para autenticar documentos y contratos de manera segura y verificables. Nuestro objetivo es modernizar y agilizar los servicios notariales, ofreciendo una solución que garantiza la autenticidad y la inmutabilidad de los documentos notariales.
 
-* **Bounty Aplicado:** Begginers Bounty
+* **Bounty Aplicado:** Begginers Bounty y Privacy Bounty
 
 ## Instrucciones de Instalación
 
@@ -40,14 +40,11 @@ NotaryChain es una plataforma de notaría digital descentralizada que utiliza la
     - Correo electrónico: `usuario@notarychain.com`
     - Contraseña: `12345678`
 2. En la página principal, se mostrarán los documentos notariales que ha creado.
-3. Para crear un nuevo documento notarial, haga clic en el botón "Nuevo Documento".
-4. Ingrese los datos del documento notarial y haga clic en el botón "Guardar".
-5. El documento notarial se guardará en la plataforma y se mostrará en la página principal.
-6. Para ver los detalles de un documento notarial, haga clic en el botón "Ver Detalles".
-7. En la página de detalles, se mostrarán los datos del documento notarial y la información de autenticación.
-8. Para autenticar un documento notarial, haga clic en el botón "Autenticar".
-9. Ingrese el código de autenticación y haga clic en el botón "Verificar".
-10. Se mostrará un mensaje indicando si el documento notarial es auténtico o no.
+3. Para crear un nuevo documento notarial, vaya a Documentos, llene los datos y haga clic en el botón "Notariar Documento".
+4. El documento notarial se guardará en la plataforma y se mostrará en la página documentos.
+5. Para autenticar un documento notarial, haga clic en el botón "Verificar Documentos".
+6. Elijar el archivo a verificar y haga clic en el botón "Verificar Documento".
+7. Se mostrará un mensaje indicando si el documento notarial es auténtico o no.
 
 
 ## Direcciones de Contratos Inteligentes
@@ -57,8 +54,4 @@ NotaryChain es una plataforma de notaría digital descentralizada que utiliza la
 
 ### Video demostrativo de la plataforma NotaryChain
 
-[![NotaryChain](https://img.youtube.com/vi/1QJ9Q1Z9Z1A/0.jpg)](https://www.youtube.com/watch?v=1QJ9Q1Z9Z1A)
-
-## Pitch deck
-
-[Descargar pitch deck](https://drive.google.com/file/d/1QJ9Q1Z9Z1A/view?usp=sharing)
+[![NotaryChain](https://youtu.be/cx1pkgSOVIU)](https://youtu.be/cx1pkgSOVIU)
