@@ -32,6 +32,7 @@ class NotarizedDocumentController extends Controller
             'file' => 'required|file',
             'notary' => 'required|string',
             'document_hash' => 'required|string',
+            'txid' => 'required|string',
         ]);
 
         $timestamp = now();
@@ -48,6 +49,7 @@ class NotarizedDocumentController extends Controller
             'timestamp' => $timestamp,
             'notary' => $request->notary,
             'ruta' => $ruta,
+            'txid' => $request->txid,
             'user_id' => Auth::id(),
         ]);
 

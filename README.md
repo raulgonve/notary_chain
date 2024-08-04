@@ -29,10 +29,11 @@ NotaryChain es una plataforma de notaría digital descentralizada que utiliza la
 6. Ejecutar el comando `php artisan key:generate` en la raíz del proyecto.
 7. Ejecutar el comando `php artisan migrate` en la raíz del proyecto.
 8. Ejecutar el comando `php artisan db:seed` en la raíz del proyecto.
-9. Ejecutar el comando `php artisan serve` en la raíz del proyecto.
-10. Ejecutar el comando `npm install` en la raíz del proyecto.
-11. Ejecutar el comando `npm run dev` en la raíz del proyecto en otra ventana del terminal.
-12. Acceder a la URL `http://localhost:8000` en su navegador web.
+9. Ejecutar el comando `php artisan storage:link` en la raíz del proyecto.
+10. Ejecutar el comando `php artisan serve` en la raíz del proyecto.
+11. Ejecutar el comando `npm install` en la raíz del proyecto.
+12. Ejecutar el comando `npm run dev` en la raíz del proyecto en otra ventana del terminal.
+13. Acceder a la URL `http://localhost:8000` en su navegador web.
 
 ## Instrucciones de Uso
 
@@ -54,4 +55,4 @@ NotaryChain es una plataforma de notaría digital descentralizada que utiliza la
 
 ### Video demostrativo de la plataforma NotaryChain
 
-[![NotaryChain](https://youtu.be/cx1pkgSOVIU)](https://youtu.be/cx1pkgSOVIU)
+[![NotaryChain](https://youtu.be/lN8ffnhKryI)](https://youtu.be/lN8ffnhKryI)

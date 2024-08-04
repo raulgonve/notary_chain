@@ -16,6 +16,7 @@ const form = useForm({
   file: null,
   notary: null,
   document_hash: null,
+  txid: null,
 });
 
 const fileName = ref("");
@@ -100,6 +101,7 @@ const issueSBT = async (message, file) => {
 
     const tx = await contract.issueSBT(documentHash, documentID, userAddress);
     await tx.wait();
+    form.txid = tx.hash;
 
     // console.log("Token emitido con éxito:", tx);
     return true;

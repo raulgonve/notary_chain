@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('document_id');
             $table->string('notary');
             $table->string('ruta');
+            $table->string('txid');
             $table->timestamp('timestamp');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

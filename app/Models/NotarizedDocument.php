@@ -17,6 +17,7 @@ class NotarizedDocument extends Model
         'timestamp',
         'notary',
         'ruta',
+        'txid',
         'user_id',
     ];
 

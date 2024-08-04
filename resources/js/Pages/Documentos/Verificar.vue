@@ -68,6 +68,7 @@ const verifySBT = async () => {
     };
     loading.value = false; // Ocultar el modal de carga
     console.log("SBT verificado:", sbt);
+
   } catch (error) {
     loading.value = false; // Ocultar el modal de carga
     console.error("Error verificando el SBT:", error);

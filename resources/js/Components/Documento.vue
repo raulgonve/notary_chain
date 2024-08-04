@@ -27,8 +27,9 @@ const imageUrl = computed(() => imageBaseUrl + props.documento.ruta);
       </div>
         <p class="mt-3 text-lg text-gray-900"><b>descripcion:</b> {{ props.documento.descripcion }}</p>
         <p class="text-lg text-gray-900"><b>document_id:</b> {{ props.documento.document_id.substring(0,50) }}</p>
-        <p class="text-lg text-gray-900"><b>hash:</b> {{ props.documento.document_hash.substring(0,50) }}</p>
+        <p class="text-lg text-gray-900"><b>document hash:</b> {{ props.documento.document_hash.substring(0,50) }}</p>
         <p class="text-lg text-gray-900"><b>notary:</b> {{ props.documento.notary }}</p>
+        <p class="text-lg text-gray-900"><b>txid:</b> <a :href="'https://sepolia.scrollscan.com/tx/' + props.documento.txid" v-text="'Ver en el Explorador'" target="blank"></a></p>
         <p class="text-lg text-gray-900"><b>preview:</b>  <img :src="imageUrl" alt="archivo" class="thumbnail" /></p>
 
     </div>
